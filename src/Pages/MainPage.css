@@ -1,6 +1,7 @@
 .MainContainer {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: larger;
@@ -49,7 +50,7 @@ input {
     display: flex;
     justify-content: center;
 }
-button{
+.buttons{
     height: 45px;
     width: 200px;
     border-radius: 10px;

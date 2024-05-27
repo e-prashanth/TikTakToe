@@ -1,0 +1,80 @@
+.GameContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+  background: linear-gradient(
+      rgba(0, 31, 63, 0.5),
+      rgba(0, 31, 63, 0.792),
+      rgba(0, 31, 63, 0.5)
+    ),
+    url("/bgImg.jpg");
+  /* background-color: #adefd1ff; */
+}
+
+.boxContainer {
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  gap: 3px;
+}
+.firstContainer,
+.secondContainer,
+.thirdContainer {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  gap: 3px;
+}
+
+.Slots {
+  background-color: #adefd1ff;
+  height: 90px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  border-radius: 10px;
+  color: #00203fff;
+}
+
+.horline1 {
+  position: absolute;
+  top: 45%;
+  left: 0;
+  width: 0;
+  height: 10px;
+  background-color: red; /* Adjust the color of the line */
+  transform: translateY(-50%);
+  transform: translateX(-6%);
+  transition: width 0.5s ease-in-out;
+}
+.horline2 {
+    position: absolute;
+    top: 45%;
+    left: 0;
+    width: 0;
+    height: 10px;
+    background-color: red; /* Adjust the color of the line */
+    transform: translateY(-50%);
+    transform: translateX(-6%);
+    transition: width 0.5s ease-in-out;
+  }
+  .horline3 {
+    position: absolute;
+    top: 45%;
+    left: 0;
+    width: 0;
+    height: 10px;
+    background-color: red; /* Adjust the color of the line */
+    /* transform: translateY(-40%); */
+    transform: translateX(-6%);
+    transition: width 0.5s ease-in-out;
+  }
+
+.animate-line {
+  width: 115%;
+}

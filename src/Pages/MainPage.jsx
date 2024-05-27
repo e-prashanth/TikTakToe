@@ -16,6 +16,7 @@ function MainPage() {
   };
   return (
     <div className="MainContainer">
+        <img src="/logobg.png" style={{height:"90px"}} />
       <form
         className="FormContianer"
         onSubmit={(e) => {
@@ -48,7 +49,7 @@ function MainPage() {
         </div>
 
         <div className="buttonContainer">
-          <button type="submit">Start the Game</button>
+          <button className='buttons' type="submit">Start the Game</button>
         </div>
       </form>
     </div>
