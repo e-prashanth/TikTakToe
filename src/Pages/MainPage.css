@@ -1,0 +1,66 @@
+.MainContainer {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+  background:linear-gradient(rgba(0, 31, 63, 0.5),rgba(0, 31, 63, 0.792),rgba(0, 31, 63, 0.5)),url('/bgImg.jpg');
+  /* background-color: #adefd1ff; */
+}
+
+.FormContianer {
+  border: 2px solid black;
+  padding:30px;
+  min-width: 600px;
+  height: 300px;
+  border-radius: 10px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(204, 240, 224, 0.71);
+  color: #00203FFF;
+  /* background-color: #00203FFF; */
+}
+
+label{
+    font-size: larger;
+}
+.InputContainer{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+  border-radius: 10px;
+  height: 40px;
+  text-align: center;
+  font-size: 1rem;
+  background-color: #00203FFF;
+  color:#adefd1ff;
+  /* width: 100px; */
+}
+.buttonContainer{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+button{
+    height: 45px;
+    width: 200px;
+    border-radius: 10px;
+    color: #adefd1ff;
+    background-color: #00203FFF;
+    align-self: center;
+    font-size: large;
+}
+
+@media (max-width:600px){
+    .FormContianer{
+        min-width: 250px;
+    }
+}
