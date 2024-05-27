@@ -148,6 +148,7 @@ function GamePage() {
     window.location.reload();
   };
   const handleGoBack = () => {
+    localStorage.clear();
     navigate("/TikTakToe/");
   };
 
