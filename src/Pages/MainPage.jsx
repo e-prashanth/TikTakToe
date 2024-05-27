@@ -10,6 +10,8 @@ function MainPage() {
     console.log("starting the game !!");
     console.log(player1Name);
     console.log(player2Name);
+    localStorage.setItem("player1Name",player1Name);
+    localStorage.setItem("player2Name",player2Name);
     navigate("/game");
   };
   return (
