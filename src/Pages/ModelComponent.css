@@ -1,0 +1,46 @@
+.totalContiner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* z-index: 1000;  */
+}
+
+.ModelContainer {
+    position: fixed;
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    width: 400px;
+    text-align: center;
+    font-size: 30px;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    height: 200px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    color: #00203FFF;
+}
+
+.ResetButton{
+border-radius: 10px;
+height: 35px;
+width: 150px;
+margin-top: 10px;
+font-size: 20px;
+color: #adefd1ff;
+background-color: #00203FFF;
+}
+
+@media (max-width:600px) {
+    .ModelContainer{
+        top: 48%;
+        width: 300px;
+    }
+}
