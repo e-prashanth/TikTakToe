@@ -12,7 +12,7 @@ function MainPage() {
     console.log(player2Name);
     localStorage.setItem("player1Name",player1Name);
     localStorage.setItem("player2Name",player2Name);
-    navigate("/game");
+    navigate("/TikTakToe/game");
   };
   return (
     <div className="MainContainer">
