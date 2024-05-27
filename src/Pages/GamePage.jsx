@@ -154,7 +154,7 @@ function GamePage() {
   return (
     <div className="GameContainer">
       {displaywinner && <ModelComponent props={{ winner: Winner }} />}
-      <img src="/logobg.png" style={{ height: "90px" }} />
+      <img src="logobg.png" style={{ height: "90px" }} />
       <div className="verline1" id="verline1"></div>
       <div className="verline2" id="verline2"></div>
       <div className="verline3" id="verline3"></div>
@@ -250,15 +250,15 @@ function GamePage() {
       </div>
       <div className="PlayerContainer">
         <div className="firstPlayer">
-          {turn === "X" && <img className="arrowImage" src="/arrow.png"></img>}
-          <img className="profileImage" src="./profile.png"></img>
+          {turn === "X" && <img className="arrowImage" src="arrow.png"></img>}
+          <img className="profileImage" src="profile.png"></img>
           <h1>{player1}</h1>
         </div>
         <div className="secondPlayer">
-          <img className="profileImage" src="./profile.png"></img>
+          <img className="profileImage" src="profile.png"></img>
           <h1>{player2}</h1>
           {turn === "O" && (
-            <img className="arrowImage" src="/arrow-L.png"></img>
+            <img className="arrowImage" src="arrow-L.png"></img>
           )}
         </div>
       </div>

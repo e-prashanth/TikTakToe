@@ -16,7 +16,7 @@ function MainPage() {
   };
   return (
     <div className="MainContainer">
-        <img src="/logobg.png" style={{height:"90px"}} />
+        <img src="logobg.png" style={{height:"90px"}} />
       <form
         className="FormContianer"
         onSubmit={(e) => {

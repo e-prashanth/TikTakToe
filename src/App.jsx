@@ -6,7 +6,7 @@ function App() {
   return (
     <Routes>
       <Route path='/TikTakToe/' element={<MainPage/>}/>
-      <Route path='/TikTakToe/game' element={<GamePage/>}/>
+      <Route path='/TikTakToe/game/' element={<GamePage/>}/>
     </Routes>
   )
 }
