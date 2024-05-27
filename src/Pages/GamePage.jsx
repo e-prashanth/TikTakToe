@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import "./GamePage.css";
 import ModelComponent from "./ModelComponent";
+import { useNavigate } from "react-router-dom";
 function GamePage() {
+  const navigate = useNavigate();
   const player1 = localStorage.getItem("player1Name") || "Player1";
   const player2 = localStorage.getItem("player2Name") || "Player2";
   const [values, setvalues] = useState(["", "", "", "", "", "", "", "", ""]);
   const [turn, setturn] = useState("X");
   const [displaywinner, setdisplaywinner] = useState(false);
   const [Winner, setWinner] = useState("None");
+  const [count, setCount] = useState(1);
   const checkWinner = () => {
+    setCount(count + 1);
+    console.log(count);
+    if (count == 9) {
+      setdisplaywinner(true);
+    }
     console.log(values);
     if (values[0] == "X" && values[1] == "X" && values[2] == "X") {
       document.getElementById("horline1").classList.add("animate-line");
@@ -133,12 +141,19 @@ function GamePage() {
     setvalues(newValues);
     setturn(turn === "X" ? "O" : "X");
     checkWinner();
+    console.log(document.getElementById(ind));
     document.getElementById(ind).disabled = true;
+  };
+  const handleResetGame = () => {
+    window.location.reload();
+  };
+  const handleGoBack = () => {
+    navigate("/");
   };
 
   return (
     <div className="GameContainer">
-      {displaywinner && <ModelComponent props={{ PlayerName: Winner }} />}
+      {displaywinner && <ModelComponent props={{ winner: Winner }} />}
       <img src="/logobg.png" style={{ height: "90px" }} />
       <div className="verline1" id="verline1"></div>
       <div className="verline2" id="verline2"></div>
@@ -247,7 +262,22 @@ function GamePage() {
           )}
         </div>
       </div>
-      <button className="ResetButton1">Reset Game</button>
+      <button
+        className="ResetButton1"
+        onClick={() => {
+          handleResetGame();
+        }}
+      >
+        Reset Game
+      </button>
+      <button
+        className="ResetButton1"
+        onClick={() => {
+          handleGoBack();
+        }}
+      >
+        Go Back
+      </button>
     </div>
   );
 }

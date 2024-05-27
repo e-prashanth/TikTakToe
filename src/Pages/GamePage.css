@@ -155,4 +155,7 @@
         flex-direction: column;
         gap:0px;
     }
+    .animate-line-2{
+        height: 0;
+    }
 }
