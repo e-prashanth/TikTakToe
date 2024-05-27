@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import "./GamePage.css";
 import ModelComponent from "./ModelComponent";
 function GamePage() {
-  const player1 = "Prashanth";
-  const player2 = "Varma";
+  const player1 = localStorage.getItem("player1Name") || "Player1";
+  const player2 = localStorage.getItem("player2Name") || "Player2";
   const [values, setvalues] = useState(["", "", "", "", "", "", "", "", ""]);
   const [turn, setturn] = useState("X");
   const [displaywinner, setdisplaywinner] = useState(false);
+  const [Winner, setWinner] = useState("None");
   const checkWinner = () => {
     console.log(values);
     if (values[0] == "X" && values[1] == "X" && values[2] == "X") {
       document.getElementById("horline1").classList.add("animate-line");
+      setWinner(player1);
       setTimeout(() => {
         setdisplaywinner(true);
       }, 600);
@@ -18,6 +20,7 @@ function GamePage() {
       //   window.location.reload();
     } else if (values[3] == "X" && values[4] == "X" && values[5] == "X") {
       document.getElementById("horline2").classList.add("animate-line");
+      setWinner(player1);
       setTimeout(() => {
         setdisplaywinner(true);
       }, 600);
@@ -25,6 +28,7 @@ function GamePage() {
       //   window.location.reload();
     } else if (values[6] == "X" && values[7] == "X" && values[8] == "X") {
       document.getElementById("horline3").classList.add("animate-line");
+      setWinner(player1);
       setTimeout(() => {
         setdisplaywinner(true);
       }, 600);
@@ -32,12 +36,14 @@ function GamePage() {
       //   window.location.reload();
     } else if (values[0] == "X" && values[3] == "X" && values[6] == "X") {
       document.getElementById("verline1").classList.add("animate-line-2");
+      setWinner(player1);
       setTimeout(() => {
         setdisplaywinner(true);
       }, 600);
       // window.location.reload();
     } else if (values[1] == "X" && values[4] == "X" && values[7] == "X") {
       document.getElementById("verline2").classList.add("animate-line-2");
+      setWinner(player1);
       setTimeout(() => {
         setdisplaywinner(true);
       }, 600);
@@ -45,24 +51,24 @@ function GamePage() {
       //   window.location.reload();
     } else if (values[2] == "X" && values[5] == "X" && values[8] == "X") {
       document.getElementById("verline3").classList.add("animate-line-2");
+      setWinner(player1);
       setTimeout(() => {
         setdisplaywinner(true);
       }, 600);
       //   alert("Player 1 Wins");
       //   window.location.reload();
     } else if (values[0] == "X" && values[4] == "X" && values[8] == "X") {
-      setTimeout(() => {
-        setdisplaywinner(true);
-      }, 600);
+      setWinner(player1);
+      setdisplaywinner(true);
       //   alert("Player 1 Wins");
       //   window.location.reload();
-    } else if (values[2] == "X" && values[5] == "X" && values[6] == "X") {
-      setTimeout(() => {
-        setdisplaywinner(true);
-      }, 600);
+    } else if (values[2] == "X" && values[4] == "X" && values[6] == "X") {
+      setWinner(player1);
+      setdisplaywinner(true);
       //   alert("Player 1 Wins");
       //   window.location.reload();
     } else if (values[0] == "O" && values[1] == "O" && values[2] == "O") {
+      setWinner(player2);
       document.getElementById("horline1").classList.add("animate-line");
       setTimeout(() => {
         setdisplaywinner(true);
@@ -70,6 +76,7 @@ function GamePage() {
       //   alert("Player 2 Wins");
       //   window.location.reload();
     } else if (values[3] == "O" && values[4] == "O" && values[5] == "O") {
+      setWinner(player2);
       document.getElementById("horline2").classList.add("animate-line");
       setTimeout(() => {
         setdisplaywinner(true);
@@ -77,6 +84,7 @@ function GamePage() {
       //   alert("Player 2 Wins");
       //   window.location.reload();
     } else if (values[6] == "O" && values[7] == "O" && values[8] == "O") {
+      setWinner(player2);
       document.getElementById("horline3").classList.add("animate-line");
       setTimeout(() => {
         setdisplaywinner(true);
@@ -84,6 +92,7 @@ function GamePage() {
       //   alert("Player 2 Wins");
       //   window.location.reload();
     } else if (values[0] == "O" && values[3] == "O" && values[6] == "O") {
+      setWinner(player2);
       document.getElementById("verline1").classList.add("animate-line-2");
       setTimeout(() => {
         setdisplaywinner(true);
@@ -91,6 +100,7 @@ function GamePage() {
       //   alert("Player 2 Wins");
       //   window.location.reload();
     } else if (values[1] == "O" && values[4] == "O" && values[7] == "O") {
+      setWinner(player2);
       document.getElementById("verline2").classList.add("animate-line-2");
       setTimeout(() => {
         setdisplaywinner(true);
@@ -98,6 +108,7 @@ function GamePage() {
       //   alert("Player 2 Wins");
       //   window.location.reload();
     } else if (values[2] == "O" && values[5] == "O" && values[8] == "O") {
+      setWinner(player2);
       document.getElementById("verline3").classList.add("animate-line-2");
       setTimeout(() => {
         setdisplaywinner(true);
@@ -105,15 +116,13 @@ function GamePage() {
       //   alert("Player 2 Wins");
       //   window.location.reload();
     } else if (values[0] == "O" && values[4] == "O" && values[8] == "O") {
-      setTimeout(() => {
-        setdisplaywinner(true);
-      }, 600);
+      setWinner(player2);
+      setdisplaywinner(true);
       //   alert("Player 2 Wins");
       //   window.location.reload();
-    } else if (values[2] == "O" && values[5] == "O" && values[6] == "O") {
-      setTimeout(() => {
-        setdisplaywinner(true);
-      }, 600);
+    } else if (values[2] == "O" && values[4] == "O" && values[6] == "O") {
+      setWinner(player2);
+      setdisplaywinner(true);
       //   alert("Player 2 Wins");
       //   window.location.reload();
     }
@@ -129,7 +138,7 @@ function GamePage() {
 
   return (
     <div className="GameContainer">
-      {displaywinner && <ModelComponent />}
+      {displaywinner && <ModelComponent props={{ PlayerName: Winner }} />}
       <img src="/logobg.png" style={{ height: "90px" }} />
       <div className="verline1" id="verline1"></div>
       <div className="verline2" id="verline2"></div>
@@ -226,14 +235,16 @@ function GamePage() {
       </div>
       <div className="PlayerContainer">
         <div className="firstPlayer">
-          {turn==='X' && <img className="arrowImage" src="/arrow.png"></img>}
+          {turn === "X" && <img className="arrowImage" src="/arrow.png"></img>}
           <img className="profileImage" src="./profile.png"></img>
           <h1>{player1}</h1>
         </div>
         <div className="secondPlayer">
           <img className="profileImage" src="./profile.png"></img>
           <h1>{player2}</h1>
-          {turn==='O' &&<img className="arrowImage" src="/arrow-L.png"></img>}
+          {turn === "O" && (
+            <img className="arrowImage" src="/arrow-L.png"></img>
+          )}
         </div>
       </div>
       <button className="ResetButton1">Reset Game</button>

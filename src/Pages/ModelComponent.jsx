@@ -1,14 +1,15 @@
 import React from "react";
 import "./ModelComponent.css";
-function ModelComponent({ PlayerName }) {
+function ModelComponent({props}) {
   const handleResetGame = () => {
     console.log("clicked");
     window.location.reload();
   };
+  console.log(props)
   return (
     <div className="totalContianer">
       <div className="ModelContainer">
-        Prashanth is the Winner <br></br>🥳💃
+        {props.PlayerName} is the Winner <br></br>🥳💃
         <button
           className="ResetButton"
           onClick={() => {
