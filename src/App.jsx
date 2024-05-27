@@ -5,8 +5,8 @@ import GamePage from './Pages/GamePage.jsx';
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<MainPage/>}/>
-      <Route path='/game' element={<GamePage/>}/>
+      <Route path='/TikTakToe/' element={<MainPage/>}/>
+      <Route path='/TikTakToe/game' element={<GamePage/>}/>
     </Routes>
   )
 }
