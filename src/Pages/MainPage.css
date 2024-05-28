@@ -38,6 +38,7 @@ label{
 
 input {
   border-radius: 10px;
+  border:0px;
   height: 40px;
   text-align: center;
   font-size: 1rem;
@@ -45,6 +46,8 @@ input {
   color:#adefd1ff;
   /* width: 100px; */
 }
+
+
 .buttonContainer{
     margin-top: 40px;
     display: flex;
@@ -63,5 +66,8 @@ input {
 @media (max-width:600px){
     .FormContianer{
         min-width: 250px;
+    }
+    input{
+      border: 0px;
     }
 }
