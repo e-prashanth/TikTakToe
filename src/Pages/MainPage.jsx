@@ -7,16 +7,18 @@ function MainPage() {
   const navigate = useNavigate();
   const handleStartGame = (event) => {
     event.preventDefault();
-    console.log("starting the game !!");
-    console.log(player1Name);
-    console.log(player2Name);
-    localStorage.setItem("player1Name",player1Name);
-    localStorage.setItem("player2Name",player2Name);
-    navigate("/TikTakToe/game");
+    if (player1Name === player2Name) {
+      alert("Player's Name Cannot be Same !!");
+      window.location.reload();
+    } else {
+      localStorage.setItem("player1Name", player1Name);
+      localStorage.setItem("player2Name", player2Name);
+      navigate("/TikTakToe/game");
+    }
   };
   return (
     <div className="MainContainer">
-        <img src="logobg.png" style={{height:"90px"}} />
+      <img src="logobg.png" style={{ height: "90px" }} />
       <form
         className="FormContianer"
         onSubmit={(e) => {
@@ -31,7 +33,7 @@ function MainPage() {
               required
               placeholder="Enter the Player1 Name"
               onChange={(e) => {
-                setplayer1Name(e.target.value);
+                setplayer1Name(e.target.value.trim());
               }}
             />
           </div>
@@ -42,14 +44,16 @@ function MainPage() {
               required
               placeholder="Enter the Player2 Name"
               onChange={() => {
-                setplayer2Name(event.target.value);
+                setplayer2Name(event.target.value.trim());
               }}
             />
           </div>
         </div>
 
         <div className="buttonContainer">
-          <button className='buttons' type="submit">Start the Game</button>
+          <button className="buttons" type="submit">
+            Start the Game
+          </button>
         </div>
       </form>
     </div>
