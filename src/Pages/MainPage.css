@@ -5,13 +5,18 @@
   justify-content: center;
   align-items: center;
   font-size: larger;
-  background:linear-gradient(rgba(0, 31, 63, 0.5),rgba(0, 31, 63, 0.792),rgba(0, 31, 63, 0.5)),url('/bgImg.jpg');
+  background: linear-gradient(
+      rgba(0, 31, 63, 0.5),
+      rgba(0, 31, 63, 0.792),
+      rgba(0, 31, 63, 0.5)
+    ),
+    url("/bgImg.jpg");
   /* background-color: #adefd1ff; */
 }
 
 .FormContianer {
   border: 2px solid black;
-  padding:30px;
+  padding: 30px;
   min-width: 600px;
   height: 300px;
   border-radius: 10px;
@@ -21,53 +26,88 @@
   align-items: center;
   justify-content: center;
   background-color: rgba(204, 240, 224, 0.71);
-  color: #00203FFF;
+  color: #00203fff;
   /* background-color: #00203FFF; */
 }
 
-label{
-    font-size: larger;
+label {
+  font-size: larger;
 }
-.InputContainer{
-    margin-top: 5px;
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.InputContainer {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 input {
   border-radius: 10px;
-  border:0px;
+  border: 0px;
   height: 40px;
   text-align: center;
   font-size: 1rem;
-  background-color: #00203FFF;
-  color:#adefd1ff;
+  background-color: #00203fff;
+  color: #adefd1ff;
   /* width: 100px; */
 }
 
+.buttonContainer {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+.buttons {
+  height: 45px;
+  width: 200px;
+  border-radius: 10px;
+  color: #adefd1ff;
+  background-color: #00203fff;
+  align-self: center;
+  font-size: large;
+}
 
-.buttonContainer{
-    margin-top: 40px;
+.PlayerSelectionContianer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #00aef2;
+  color: #adefd1ff;
+}
+
+input [type="”radio”"] {
+  accent-color: #ff0000 !important ;
+  /* color: #00203FFF; */
+}
+
+@media (max-width: 600px) {
+  .FormContianer {
+    min-width: 250px;
+  }
+  input {
+    border: 0px;
+  }
+  .PlayerSelectionContianer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-}
-.buttons{
-    height: 45px;
-    width: 200px;
-    border-radius: 10px;
-    color: #adefd1ff;
-    background-color: #00203FFF;
-    align-self: center;
-    font-size: large;
-}
-
-@media (max-width:600px){
-    .FormContianer{
-        min-width: 250px;
-    }
-    input{
-      border: 0px;
-    }
+    align-items: center;
+  }
+  #PLayerVsPlayer,#ComputerVsPlayer{
+    height: 15px !important;
+    width: 15px !important;
+  }
+  #ComputerVsPlayer{
+    margin-left: 0px !important;
+  }
+  .firstMode,.secondMode{
+    display: flex;
+    /* flex-direction: column; */
+        justify-content: center;
+        align-self: center;
+  }
 }
