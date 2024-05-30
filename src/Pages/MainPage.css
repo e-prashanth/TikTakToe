@@ -76,7 +76,7 @@ input {
   font-weight: bold;
   margin-bottom: 10px;
   color: #00aef2;
-  color: #adefd1ff;
+  color: #adefd1ff; 
 }
 
 input [type="”radio”"] {
@@ -101,7 +101,7 @@ input [type="”radio”"] {
     height: 15px !important;
     width: 15px !important;
   }
-  #ComputerVsPlayer{
+  #PlauerVsPlayer{
     margin-left: 0px !important;
   }
   .firstMode,.secondMode{

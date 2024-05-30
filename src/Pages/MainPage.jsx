@@ -8,7 +8,7 @@ function MainPage() {
   const [Mode, setMode] = useState(1);
   const handleStartGame = (event) => {
     event.preventDefault();
-    if (Mode === 1) {
+    if (Mode === 2) {
       if (player1Name === player2Name) {
         alert("Player's Name Cannot be Same !!");
         window.location.reload();
@@ -17,13 +17,12 @@ function MainPage() {
         localStorage.setItem("player2Name", player2Name);
         navigate("/TikTakToe/game");
       }
-    }
-    else if(Mode===2){
-      if(player1Name==='Computer' || player1Name==='computer'){
-        alert("Player Name Can't be Computer!!")
-      }
-      else{
+    } else if (Mode === 1) {
+      if (player1Name === "Computer" || player1Name === "computer") {
+        alert("Player Name Can't be Computer!!");
+      } else {
         localStorage.setItem("player1Name", player1Name);
+        localStorage.setItem("player2Name","Computer")
         navigate("/TikTakToe/gamewithcomputer");
       }
     }
@@ -38,18 +37,6 @@ function MainPage() {
     <div className="MainContainer">
       <img src="logobg.png" style={{ height: "90px" }} />
       <div className="PlayerSelectionContianer">
-        <div className="firstMode">
-          <input
-            type="radio"
-            name="gameMode"
-            id="PLayerVsPlayer"
-            style={{ height: "20px", width: "20px", accentColor: "#adefd1ff" }}
-            onChange={() => {
-              handleModeSelection(1);
-            }}
-          />
-          Player VS Player
-        </div>
         <div className="secondMode">
           <input
             type="radio"
@@ -59,13 +46,25 @@ function MainPage() {
               height: "20px",
               width: "20px",
               accentColor: "#adefd1ff",
-              marginLeft: "30px",
             }}
+            onChange={() => {
+              handleModeSelection(1);
+            }}
+          />
+          Computer VS Player
+        </div>
+        <div className="firstMode">
+          <input
+            type="radio"
+            name="gameMode"
+            id="PLayerVsPlayer"
+            style={{ height: "20px", width: "20px", accentColor: "#adefd1ff" ,marginLeft: "30px",
+          }}
             onChange={() => {
               handleModeSelection(2);
             }}
           />
-          Computer VS Player
+          Player VS Player
         </div>
       </div>
 
@@ -77,19 +76,19 @@ function MainPage() {
       >
         <div className="onlyInputsContainer">
           <div className="InputContainer">
-            <label>{Mode === 1 ? "Player1" : "Player Name"}</label>
+            <label>{Mode === 2 ? "Player1" : "Player Name"}</label>
             <input
               type="text"
               required
               placeholder={
-                Mode === 1 ? "Enter the Player 1 Name" : "Enter the Player Name"
+                Mode === 2 ? "Enter the Player 1 Name" : "Enter the Player Name"
               }
               onChange={(e) => {
                 setplayer1Name(e.target.value.trim());
               }}
             />
           </div>
-          {Mode === 1 && (
+          {Mode === 2 && (
             <div className="InputContainer">
               <label>Player 2</label>
               <input

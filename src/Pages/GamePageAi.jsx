@@ -2,8 +2,10 @@ import React from 'react'
 
 function GamePageAi() {
   return (
-    <div>GamePageAi</div>
-  )
+    <div className="ComputerGameContainer">
+        
+    </div>
+)
 }
 
 export default GamePageAi
