@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 function GamePageAi() {
   const navigate = useNavigate();
   const player1 = localStorage.getItem("player1Name") || "Player1";
-  const player2 = localStorage.getItem("player2Name") || "Player2";
   const [values, setvalues] = useState(["", "", "", "", "", "", "", "", ""]);
   const winningPatterns = [
     [0, 1, 2], //row 1
@@ -24,9 +23,6 @@ function GamePageAi() {
   const [count, setCount] = useState(1);
   useEffect(() => {
     if (turn === "X") {
-      PlayerPlaying("X");
-    }
-    if (turn === "O") {
       MakeAMove();
     }
   }, [turn]);
@@ -45,7 +41,7 @@ function GamePageAi() {
         newvalues[val2] === "X" &&
         newvalues[val3] === "X"
       ) {
-        setWinner(player1);
+        setWinner('Computer');
         setTimeout(() => {
           setdisplaywinner(true);
         }, 0);
@@ -54,7 +50,7 @@ function GamePageAi() {
         newvalues[val2] === "O" &&
         newvalues[val3] === "O"
       ) {
-        setWinner(player2);
+        setWinner(player1);
         setTimeout(() => {
           setdisplaywinner(true);
         }, 0);
@@ -67,17 +63,12 @@ function GamePageAi() {
     newValues[ind] = turn;
     setvalues(newValues);
     setturn(turn === "X" ? "O" : "X");
-    PlayerPlaying(turn === "X" ? "O" : "X");
     checkWinner(newValues);
     const slot = document.getElementById(ind);
     slot.disabled = true;
     turn === "X"
       ? (slot.style.color = "whitesmoke")
       : (slot.style.color = "black");
-  };
-
-  const changeValueForAi = (ind) => {
-    console.log(turn);
   };
 
   const handleResetGame = () => {
@@ -88,37 +79,101 @@ function GamePageAi() {
     navigate("/TikTakToe/");
   };
 
-  const MakeAMove = () => {
-    console.log(turn);
+  const SeeWinner = (newvalues) => {
+    for (let i = 0; i < 8; i++) {
+      const val1 = winningPatterns[i][0];
+      const val2 = winningPatterns[i][1];
+      const val3 = winningPatterns[i][2];
+      if (
+        newvalues[val1] === "X" &&
+        newvalues[val2] === "X" &&
+        newvalues[val3] === "X"
+      ) {
+        return 1; // Player X wins
+      } else if (
+        newvalues[val1] === "O" &&
+        newvalues[val2] === "O" &&
+        newvalues[val3] === "O"
+      ) {
+        return -1; // Player O wins
+      }
+    }
+
+    // Check for draw
+    let draw = true;
     for (let i = 0; i < 9; i++) {
-      if (values[i] === "") {
-        const newValues = [...values];
-        newValues[i] = turn;
-        setvalues(newValues);
-        setturn("X");
-        PlayerPlaying(turn === "X" ? "O" : "X");
-        checkWinner(newValues);
-        const slot = document.getElementById(i);
-        slot.disabled = true;
+      if (newvalues[i] === "") {
+        draw = false;
         break;
       }
     }
+
+    if (draw) {
+      return 0; // Game is a draw
+    }
+
+    // If no winner and no draw yet, return null
+    return null;
   };
 
-  const PlayerPlaying = (t) => {
-    if (t === "X") {
-      // document.getElementById("Player1Name").classList.remove("PlayerName");
-      const p1 = document.getElementById("Player1Name");
-      p1.classList.add("PlayerPlaying");
-      const p2 = document.getElementById("Player2Name");
-      p2.classList.remove("PlayerPlaying");
-    } else if (t === "O") {
-      const p1 = document.getElementById("Player2Name");
-      p1.classList.add("PlayerPlaying");
-      const p2 = document.getElementById("Player1Name");
-      p2.classList.remove("PlayerPlaying");
+  const MakeAMove = () => {
+    let bestScore = -Infinity;
+    let bestMove;
+    let tempvalues = values;
+    for (let i = 0; i < 9; i++) {
+      if (values[i] === "") {
+        tempvalues[i] = "X";
+        let score = miniMax(tempvalues, 0, false);
+        tempvalues[i] = "";
+        if (score > bestScore) {
+          bestScore = score;
+          bestMove = i;
+        }
+      }
+    }
+    if (bestMove !== undefined) {
+      const newValues = [...values];
+      newValues[bestMove] = "X";
+      setvalues(newValues);
+      setturn("O");
+      checkWinner(newValues);
+      const slot = document.getElementById(bestMove);
+      slot.disabled = true;
+      console.log("bestmove:", bestMove);
     }
   };
+
+  const miniMax = (tempValues, depth, isMaximizing) => {
+    const score = SeeWinner(tempValues);
+    if (score !== null) {
+      return score * (10 - depth); // Adjust score based on depth
+    }
+
+    if (isMaximizing) {
+      let bestScore = -Infinity;
+      for (let i = 0; i < 9; i++) {
+        if (tempValues[i] === "") {
+          tempValues[i] = "X";
+          let currentScore = miniMax(tempValues, depth + 1, false);
+          tempValues[i] = "";
+          bestScore = Math.max(bestScore, currentScore);
+        }
+      }
+      return bestScore;
+    } else {
+      let bestScore = Infinity;
+      for (let i = 0; i < 9; i++) {
+        if (tempValues[i] === "") {
+          tempValues[i] = "O";
+          let currentScore = miniMax(tempValues, depth + 1, true);
+          tempValues[i] = "";
+          bestScore = Math.min(bestScore, currentScore);
+        }
+      }
+      return bestScore;
+    }
+  };
+
 
   return (
     <div className="GameContainer">
@@ -214,12 +269,12 @@ function GamePageAi() {
       <div className="PlayerContainer">
         <div className="firstPlayer">
           <p className="PlayerName" id="Player1Name">
-            {player1}
+            {"Computer(X)"}
           </p>
         </div>
         <div className="secondPlayer">
           <p className="PlayerName" id="Player2Name">
-            {player2}
+            {`${player1}(O)`}
           </p>
         </div>
       </div>
