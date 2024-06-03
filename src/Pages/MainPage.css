@@ -70,8 +70,6 @@ input {
 .PlayerSelectionContianer {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
   font-size: 25px;
   font-weight: bold;
   margin-bottom: 10px;
@@ -94,12 +92,12 @@ input [type="”radio”"] {
   .PlayerSelectionContianer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: flex-start ;
+    align-items: flex-start; */
   }
   #PLayerVsPlayer,#ComputerVsPlayer{
-    height: 15px !important;
-    width: 15px !important;
+    height:20px !important;
+    width: 20px !important;
   }
   #PlauerVsPlayer{
     margin-left: 0px !important;
