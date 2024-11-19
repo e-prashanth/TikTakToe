@@ -22,7 +22,7 @@ function MainPage() {
         alert("Player Name Can't be Computer!!");
       } else {
         localStorage.setItem("player1Name", player1Name);
-        localStorage.setItem("player2Name","Computer")
+        localStorage.setItem("player2Name", "Computer");
         navigate("/TikTakToe/gamewithcomputer");
       }
     }
@@ -58,8 +58,12 @@ function MainPage() {
             type="radio"
             name="gameMode"
             id="PLayerVsPlayer"
-            style={{ height: "20px", width: "20px", accentColor: "#adefd1ff" ,marginLeft: "30px",
-          }}
+            style={{
+              height: "20px",
+              width: "20px",
+              accentColor: "#adefd1ff",
+              marginLeft: "30px",
+            }}
             onChange={() => {
               handleModeSelection(2);
             }}

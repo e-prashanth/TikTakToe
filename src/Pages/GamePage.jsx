@@ -24,7 +24,7 @@ function GamePage() {
   const [count, setCount] = useState(1);
   useEffect(() => {
     if (turn === "X") {
-      PlayerPlaying('X');
+      PlayerPlaying("X");
     }
   }, [turn]);
 
@@ -204,9 +204,11 @@ function GamePage() {
     PlayerPlaying(turn === "X" ? "O" : "X");
     checkWinner(newValues);
     console.log(document.getElementById(ind));
-    const slot = document.getElementById(ind)
+    const slot = document.getElementById(ind);
     slot.disabled = true;
-    turn === "X" ? slot.style.color = 'whitesmoke' : slot.style.color = 'black'
+    turn === "X"
+      ? (slot.style.color = "whitesmoke")
+      : (slot.style.color = "black");
   };
   const handleResetGame = () => {
     window.location.reload();
@@ -223,7 +225,7 @@ function GamePage() {
       p1.classList.add("PlayerPlaying");
       const p2 = document.getElementById("Player2Name");
       p2.classList.remove("PlayerPlaying");
-      console.log("this is XX",p1, p2);
+      console.log("this is XX", p1, p2);
     } else if (t === "O") {
       const p1 = document.getElementById("Player2Name");
       p1.classList.add("PlayerPlaying");
